@@ -1,16 +1,81 @@
-npm install -g express-generator
-express myapp
-cd myapp
-npm install
-npm start
+# Brewster
 
-http://localhost:3000
+## Intro
 
-add routes/api.js
+This is a demo project for the [GrNodeDev](http://www.meetup.com/grnodedev/) 2014-11-06 meetup: [Node Howto: How to Setup a Build Process](http://www.meetup.com/GRNodeDev/events/209772552/).
 
-npm install --save request
+We will be building a HTTP REST API that interacts with the with the [BreweryDB REST API](http://www.brewerydb.com/developers).
 
+Brewster exposes two simple REST APIs:
 
+1. `/api/breweries?name=[search]` returns a list of breweries matching the name
 
-# Testling
-npm install mocha --save-dev
+2. `/api/beers?name=[brewery]` returns the beers for that brewery 
+
+## Scaffolding Setup
+
+1. Install Node.js (which includes `node` and `npm`) from here: [http://nodejs.org](http://nodejs.org/)
+
+2. Install the [Express.js generator CLI app](http://expressjs.com/) globally (`-g`):
+
+    ```
+    npm install -g express-generator
+    ```
+
+3. Use `express` to scaffold a new app for you:
+
+    ```
+    express myapp
+    ```
+
+4. Go into your myapp directory and install all of the required modules:
+
+    ```
+    cd myapp
+    npm install
+    ```
+
+5. Start your new app via:
+
+    ```
+    npm start
+    ````
+
+6. Test your blank website at:
+
+    [http://localhost:3000](http://localhost:3000)
+
+## Brewster REST API
+
+1. Install the [`request`](https://www.npmjs.org/package/request) NPM module so we can interact with the BreweryDB API:
+
+    ```
+    npm install --save request
+    ```
+
+2. Use the REST API routes we created at `routes/api.js`
+
+3. Change `app.js` to serve up your new API routes:
+
+    ```
+    var api = require('./routes/api');    
+    app.use('/api', api);
+    ```
+
+## Testing
+
+1. Install [`mocha`](https://www.npmjs.org/package/mocha), a test framework:
+
+    ```
+    npm install mocha --save-dev
+    ```
+
+2. TODO
+
+## Building
+
+TODO
+
+## Deploying
+
+TODO
