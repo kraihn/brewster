@@ -8,33 +8,33 @@ describe('brewster', function () {
                 throw new Error('You are incorrect sir');
             }
         });
-     });
+    });
 
     it('should list breweries by name search', function () {
 
-      request('http://localhost:3000/breweries?name=vivant', function (error, response, body) {
-          if (response.statusCode !== 200) {
-              throw new Error('You are incorrect sir');
-          }
+        request('http://localhost:3000/breweries?name=vivant', function (error, response, body) {
+            if (response.statusCode !== 200) {
+                throw new Error('You are incorrect sir');
+            }
 
-          var json = JSON.parse(body);
-          if (json.length != 1) {
-              throw new Error('There can be only one!');
-          }
-      });
+            var json = JSON.parse(body);
+            if (json.length != 1) {
+                throw new Error('There can be only one!');
+            }
+        });
     });
 
     it('should list beers by brewery', function () {
 
       request('http://localhost:3000/beers?name=Brewery%20Vivant', function (error, response, body) {
-          if (response.statusCode !== 200) {
-              throw new Error('You are incorrect sir');
-          }
+            if (response.statusCode !== 200) {
+                throw new Error('You are incorrect sir');
+            }
 
-          var json = JSON.parse(body);
-          if (json.length === 0) {
-              throw new Error('Sorry son you must have the wrong brewery');
-          }
-      });
+            var json = JSON.parse(body);
+            if (json.length === 0) {
+                throw new Error('Sorry son you must have the wrong brewery');
+            }
+        });
     });
 });
