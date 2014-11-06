@@ -26,7 +26,7 @@ router.get('/beers', function(req, res) {
     request('http://api.brewerydb.com/v2/breweries?name=' + name + '&key=97a8f227772df4da1b8335e2051da34f', function (error, response, body) {
         var json = JSON.parse(body);
 
-        if (json.data.length === 0) {
+        if (!json.data || json.data.length === 0) {
             return res.send(400, 'Invalid brewery');
         }
 
