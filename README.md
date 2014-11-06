@@ -78,7 +78,23 @@ Brewster exposes two simple REST APIs:
 
 ## Building
 
-TODO
+1. Install [`gulp`](http://gulpjs.com), a streaming build system
+
+    ```
+    npm install -g gulp
+    ```
+
+2. Clean
+
+    ```
+    gulp clean
+    ```
+
+3. Build
+
+    ```
+    gulp build
+    ```
 
 ## Deploying
 
