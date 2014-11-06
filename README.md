@@ -10,7 +10,7 @@ Brewster exposes two simple REST APIs:
 
 1. `/api/breweries?name=[search]` returns a list of breweries matching the name
 
-2. `/api/beers?name=[brewery]` returns the beers for that brewery 
+2. `/api/beers?name=[brewery]` returns the beers for that brewery
 
 ## Scaffolding Setup
 
@@ -58,7 +58,7 @@ Brewster exposes two simple REST APIs:
 3. Change `app.js` to serve up your new API routes:
 
     ```
-    var api = require('./routes/api');    
+    var api = require('./routes/api');
     app.use('/api', api);
     ```
 
@@ -67,10 +67,14 @@ Brewster exposes two simple REST APIs:
 1. Install [`mocha`](https://www.npmjs.org/package/mocha), a test framework:
 
     ```
-    npm install mocha --save-dev
+    npm install -g mocha
     ```
 
-2. TODO
+2. Run Tests
+
+    ```
+    mocha
+    ```
 
 ## Building
 
