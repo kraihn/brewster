@@ -22,7 +22,14 @@ router.get('/breweries', function(req, res) {
     });
 });
 
-router.get('/beers', function(req, res) {
+router.get('/breweries/:breweryId', function (req, res) {
+    request('http://api.brewerydb.com/v2/brewery/' + req.params.breweryId + '?&key=' + config.api.key, function (error, response, body) {
+        var json = JSON.parse(body);
+        res.send(json.data || {});
+    });
+});
+
+router.get('/beers', function (req, res) {
     var name = req.param('name');
     request('http://api.brewerydb.com/v2/breweries?name=' + name + '&key=' + config.api.key, function (error, response, body) {
         var json = JSON.parse(body);
@@ -44,6 +51,13 @@ router.get('/beers', function(req, res) {
 
             res.send(beers);
         });
+    });
+});
+
+router.get('/beers/:beerId', function (req, res) {
+    request('http://api.brewerydb.com/v2/beer/' + req.params.beerId + '?&key=' + config.api.key, function (error, response, body) {
+        var json = JSON.parse(body);
+        res.send(json.data || {});
     });
 });
 
