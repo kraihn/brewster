@@ -3,9 +3,9 @@ var router = express.Router();
 var request = require('request');
 var config = require('../config');
 
-router.get('/breweries', function(req, res) {
+router.get('/breweries', function (req, res) {
     var name = req.param('name');
-    request('http://api.brewerydb.com/v2/breweries?name=*' + name + '*&key=' + config.api.key, function (error, response, body) {
+    request(config.api.url + '/breweries?name=*' + name + '*&key=' + config.api.key, function (error, response, body) {
         var json = JSON.parse(body);
 
         if (!json.data) {
@@ -23,7 +23,7 @@ router.get('/breweries', function(req, res) {
 });
 
 router.get('/breweries/:breweryId', function (req, res) {
-    request('http://api.brewerydb.com/v2/brewery/' + req.params.breweryId + '?&key=' + config.api.key, function (error, response, body) {
+    request(config.api.url + '/brewery/' + req.params.breweryId + '?&key=' + config.api.key, function (error, response, body) {
         var json = JSON.parse(body);
         res.send(json.data || {});
     });
@@ -31,7 +31,7 @@ router.get('/breweries/:breweryId', function (req, res) {
 
 router.get('/beers', function (req, res) {
     var name = req.param('name');
-    request('http://api.brewerydb.com/v2/breweries?name=' + name + '&key=' + config.api.key, function (error, response, body) {
+    request(config.api.url + '/breweries?name=' + name + '&key=' + config.api.key, function (error, response, body) {
         var json = JSON.parse(body);
 
         if (!json.data || json.data.length === 0) {
@@ -55,7 +55,7 @@ router.get('/beers', function (req, res) {
 });
 
 router.get('/beers/:beerId', function (req, res) {
-    request('http://api.brewerydb.com/v2/beer/' + req.params.beerId + '?&key=' + config.api.key, function (error, response, body) {
+    request(config.api.url + '/beer/' + req.params.beerId + '?&key=' + config.api.key, function (error, response, body) {
         var json = JSON.parse(body);
         res.send(json.data || {});
     });
