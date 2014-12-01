@@ -29,6 +29,13 @@ router.get('/breweries/:breweryId', function (req, res) {
     });
 });
 
+router.get('/breweries/:breweryId/beers', function (req, res) {
+    request(config.api.url + '/brewery/' + req.params.breweryId + '/beers?&key=' + config.api.key, function (error, response, body) {
+        var json = JSON.parse(body);
+        res.send(json.data || []);
+    });
+});
+
 router.get('/beers', function (req, res) {
     var name = req.param('name');
     request(config.api.url + '/breweries?name=' + name + '&key=' + config.api.key, function (error, response, body) {
