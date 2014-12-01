@@ -15,7 +15,7 @@ router.get('/breweries', function (req, res) {
         var breweries = [];
 
         for (var i = 0; i < json.data.length; i++) {
-            breweries.push(json.data[i].name);
+            breweries.push({id: json.data[i].id, name: json.data[i].name});
         }
 
         res.send(breweries);
